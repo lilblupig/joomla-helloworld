@@ -30,6 +30,14 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 		// Assign data to the view
 		$this->msg = 'Hello World view display';
 
+		// Check for errors.
+		if (count($errors = $this->get('Errors')))
+		{
+			JLog::add(implode('<br />', $errors), JLog::WARNING, 'jerror');
+
+			return false;
+		}
+
 		// Display the view
 		parent::display($tpl);
 	}
