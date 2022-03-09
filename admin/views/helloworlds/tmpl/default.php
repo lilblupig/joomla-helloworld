@@ -14,18 +14,18 @@ defined('_JEXEC') or die('Restricted Access');
 	<table class="table table-striped table-hover">
 		<thead>
 		<tr>
-			<th width="1%"><?php echo JText::_('COM_HELLOWORLD_NUM'); ?></th>
+			<th width="1%"><?php echo JText::_('Item No'); ?></th>
 			<th width="2%">
 				<?php echo JHtml::_('grid.checkall'); ?>
 			</th>
 			<th width="90%">
-				<?php echo JText::_('COM_HELLOWORLD_HELLOWORLDS_NAME') ;?>
+				<?php echo JText::_('Greeting') ;?>
 			</th>
 			<th width="5%">
-				<?php echo JText::_('COM_HELLOWORLD_PUBLISHED'); ?>
+				<?php echo JText::_('Published'); ?>
 			</th>
 			<th width="2%">
-				<?php echo JText::_('COM_HELLOWORLD_ID'); ?>
+				<?php echo JText::_('ID'); ?>
 			</th>
 		</tr>
 		</thead>
