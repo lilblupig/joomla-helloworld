@@ -14,18 +14,18 @@ defined('_JEXEC') or die('Restricted Access');
 	<table class="table table-striped table-hover">
 		<thead>
 		<tr>
-			<th width="1%"><?php echo JText::_('Item No'); ?></th>
+			<th width="1%"><?php echo JText::_('COM_HELLOWORLD_NUM'); ?></th>
 			<th width="2%">
 				<?php echo JHtml::_('grid.checkall'); ?>
 			</th>
 			<th width="90%">
-				<?php echo JText::_('Greeting') ;?>
+				<?php echo JText::_('COM_HELLOWORLD_HELLOWORLDS_NAME') ;?>
 			</th>
 			<th width="5%">
-				<?php echo JText::_('Published'); ?>
+				<?php echo JText::_('COM_HELLOWORLD_PUBLISHED'); ?>
 			</th>
 			<th width="2%">
-				<?php echo JText::_('ID'); ?>
+				<?php echo JText::_('COM_HELLOWORLD_ID'); ?>
 			</th>
 		</tr>
 		</thead>
@@ -38,7 +38,9 @@ defined('_JEXEC') or die('Restricted Access');
 		</tfoot>
 		<tbody>
 			<?php if (!empty($this->items)) : ?>
-				<?php foreach ($this->items as $i => $row) : ?>
+				<?php foreach ($this->items as $i => $row) :
+					$link = JRoute::_('index.php?option=com_helloworld&task=helloworld.edit&id=' . $row->id);
+				?>
 					<tr>
 						<td>
 							<?php echo $this->pagination->getRowOffset($i); ?>
@@ -47,10 +49,12 @@ defined('_JEXEC') or die('Restricted Access');
 							<?php echo JHtml::_('grid.id', $i, $row->id); ?>
 						</td>
 						<td>
-							<?php echo $row->title; ?>
+							<a href="<?php echo $link; ?>" title="<?php echo JText::_('COM_HELLOWORLD_EDIT_HELLOWORLD'); ?>">
+								<?php echo $row->title; ?>
+							</a>
 						</td>
 						<td align="center">
-							<?php echo JHtml::_('jgrid.published', $row->published, $i, 'helloworlds.', false, 'cb'); ?>
+							<?php echo JHtml::_('jgrid.published', $row->published, $i, 'helloworlds.', true, 'cb'); ?>
 						</td>
 						<td align="center">
 							<?php echo $row->id; ?>
@@ -60,7 +64,7 @@ defined('_JEXEC') or die('Restricted Access');
 			<?php endif; ?>
 		</tbody>
 	</table>
-    <!-- Added per video, not in tutorial templates -->
-    <input type="hidden" name="boxchecked" value="0" />
-    <input type="hidden" name="task" value="" />
+	<input type="hidden" name="task" value=""/>
+	<input type="hidden" name="boxchecked" value="0"/>
+	<?php echo JHtml::_('form.token'); ?>
 </form>
