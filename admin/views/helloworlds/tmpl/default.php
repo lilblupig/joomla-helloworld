@@ -50,7 +50,7 @@ defined('_JEXEC') or die('Restricted Access');
 						</td>
 						<td>
 							<a href="<?php echo $link; ?>" title="<?php echo JText::_('COM_HELLOWORLD_EDIT_HELLOWORLD'); ?>">
-								<?php echo $row->greeting; ?>
+								<?php echo $row->title; ?>
 							</a>
 						</td>
 						<td align="center">
