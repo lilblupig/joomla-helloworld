@@ -9,28 +9,17 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-/**
- * HelloWorlds Controller
- *
- * @since  0.0.1
- */
-class HelloWorldControllerHelloWorlds extends JControllerAdmin
+class HelloWorldControllerHelloWorlds extends JControllerLegacy
 {
-	/**
-	 * Proxy for getModel.
-	 *
-	 * @param   string  $name    The model name. Optional.
-	 * @param   string  $prefix  The class prefix. Optional.
-	 * @param   array   $config  Configuration array for model. Optional.
-	 *
-	 * @return  object  The model.
-	 *
-	 * @since   1.6
-	 */
-	public function getModel($name = 'HelloWorld', $prefix = 'HelloWorldModel', $config = array('ignore_request' => true))
+	public function delete()
 	{
-		$model = parent::getModel($name, $prefix, $config);
-
-		return $model;
+		$input = JFactory::getApplication()->input;
+		$recs = $input->get('cid',array(), 'array');
+		$nrecs = $input->get('boxchecked',0, 'int');
+		$model = $this->getModel('helloworld', 'helloworldmodel');
+		$model->delete($recs);
+		$msg = "$nrecs record(s) deleted";
+		JFactory::getApplication()->enqueueMessage($msg);
+		$this->setRedirect(JRoute::_('index.php?option=com_helloworld&view=helloworlds', $msg));
 	}
 }
